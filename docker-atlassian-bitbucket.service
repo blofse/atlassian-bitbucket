@@ -1,12 +1,12 @@
 [Unit]
-Description=Docker - Atlassian Bamboo container
-Requires=docker-atlassian-bamboo-postgres.service
-After=docker-atlassian-bamboo-postgres.service
+Description=Docker - Atlassian Bitbucket container
+Requires=docker-atlassian-bitbucket-mysql.service
+After=docker-atlassian-bitbucket-mysql.service
 
 [Service]
 Restart=always
-ExecStart=/usr/bin/docker start -a atlassian-bamboo
-ExecStop=/usr/bin/docker stop -t 2 atlassian-bamboo
+ExecStart=/usr/bin/docker start -a atlassian-bitbucket
+ExecStop=/usr/bin/docker stop -t 2 atlassian-bitbucket
 
 [Install]
 WantedBy=default.target

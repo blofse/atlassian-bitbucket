@@ -1,14 +1,14 @@
 #!/bin/sh
 
 echo Stopping existing container
-docker stop atlassian-bamboo
-docker stop atlassian-bamboo-postgres
+docker stop atlassian-bitbucket
+docker stop atlassian-bitbucket-mysql
 
 echo Copying and running service
-yes | cp docker-atlassian-bamboo-postgres.service /etc/systemd/system/.
-yes | cp docker-atlassian-bamboo.service /etc/systemd/system/.
+yes | cp docker-atlassian-bitbucket-mysql.service /etc/systemd/system/.
+yes | cp docker-atlassian-bitbucket.service /etc/systemd/system/.
 systemctl daemon-reload
 
-systemctl start docker-atlassian-bamboo-postgres
-systemctl start docker-atlassian-bamboo
+systemctl start docker-atlassian-bitbucket-mysql
+systemctl start docker-atlassian-bitbucket
 echo Done!
