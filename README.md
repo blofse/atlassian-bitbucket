@@ -23,9 +23,9 @@ Once setup, you have the option to import existing bb data, as below.
 ## (optional) Migrating existing BB servers
 
 Shutdown the existing BB server instance and backup the following:
-* <bitbucket home> - create the entire BB home directory into "bitbucket-home.zip"
+* bitbucket home - create the entire BB home directory into "bitbucket-home.zip"
 * Mysqldump the existing bb db into bitbucket.sql. An example is below:
- * mysqldump --databases bitbucket > bitbucket.sql
+** mysqldump --databases bitbucket > bitbucket.sql
 
 Copy the files into the following locations, respective to the script file locations:
 * imports/bitbucket-home.zip
