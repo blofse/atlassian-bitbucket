@@ -1,0 +1,12 @@
+[Unit]
+Description=Docker - Atlassian Bamboo container
+Requires=docker-atlassian-bamboo-postgres.service
+After=docker-atlassian-bamboo-postgres.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a atlassian-bamboo
+ExecStop=/usr/bin/docker stop -t 2 atlassian-bamboo
+
+[Install]
+WantedBy=default.target
