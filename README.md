@@ -12,11 +12,13 @@ Before running this docker image, please [clone / download the repo](https://git
 ## Initialise
 Run the following command, replacing *** with your desired db password:
 ```
-initial_start_with_mysql.sh "***"
+./initial_start_with_mysql.sh '***'
 ```
 This will setup two containers: 
 * atlassian-bitbucket-mysql - a container to store your bb db data
 * atlassian-bitbucket - the container containing the bb server
+
+Please check the services have come completely up before proceeding with the optional steps below!
 
 Once setup, you have the option to import existing bb data, as below.
 
@@ -35,7 +37,7 @@ The file "imports/bitbucket.properties" should not need updating and should be l
 
 Once ready, run the following script, replacing *** with your db password entered above:
 ```
-migrate_existing_db_and_home.sh "***"
+./migrate_existing_db_and_home.sh '***'
 ```
 
 ## (optional) setting up as a service
@@ -43,5 +45,5 @@ migrate_existing_db_and_home.sh "***"
 Once initialised and perhaps migrated, the docker container can then be run as a service. 
 Included in the repo is the service for centos 7 based os's and to install run:
 ```
-copy_install_and_start_as_service.sh
+./copy_install_and_start_as_service.sh
 ```
