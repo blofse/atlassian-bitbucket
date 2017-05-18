@@ -28,8 +28,8 @@ echo Extracting zip inside docker container
 docker exec -u bitbucket -i atlassian-bitbucket /bin/bash -c 'unzip /bitbucket-home.zip -d /tmp'
 
 echo Removing old and copying new
-docker exec -u bitbucket -i atlassian-bitbucket /bin/bash -c 'rm -fr /var/atlassian/bitbucket/*'
-docker exec -u bitbucket -i atlassian-bitbucket /bin/bash -c 'cp -R /tmp/bitbucket/* /var/atlassian/bitbucket/'
+docker exec -u bitbucket -i atlassian-bitbucket /bin/bash -c 'rm -fr /var/atlassian/application-data/bitbucket/*'
+docker exec -u bitbucket -i atlassian-bitbucket /bin/bash -c 'cp -R /tmp/bitbucket/* /var/atlassian/application-data/bitbucket/'
 echo Cleaning copies
 docker exec -u bitbucket -i atlassian-bitbucket /bin/bash -c 'rm -fr /tmp/bitbucket/'
 docker exec -u root -i atlassian-bitbucket /bin/bash -c 'rm -f /bitbucket-home.zip'
@@ -37,10 +37,10 @@ docker exec -u root -i atlassian-bitbucket /bin/bash -c 'rm -f /bitbucket-home.z
 echo Copying over new properties
 cp imports/bitbucket.properties bitbucket.properties
 sed -i 's~jdbc.password=.*~jdbc.password='$1'~g' bitbucket.properties
-docker cp bitbucket.properties atlassian-bitbucket:/var/atlassian/bitbucket/shared/bitbucket.properties
+docker cp bitbucket.properties atlassian-bitbucket:/var/atlassian/application-data/bitbucket/shared/bitbucket.properties
 rm bitbucket.properties
 
-echo Starting up BB service
+echo Stopping & starting up BB service
 docker stop atlassian-bitbucket
 docker start atlassian-bitbucket
 

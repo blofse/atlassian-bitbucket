@@ -9,6 +9,9 @@ yes | cp docker-atlassian-bitbucket-mysql.service /etc/systemd/system/.
 yes | cp docker-atlassian-bitbucket.service /etc/systemd/system/.
 systemctl daemon-reload
 
+systemctl enable docker-atlassian-bitbucket-mysql
+systemctl enable docker-atlassian-bitbucket
+
 systemctl start docker-atlassian-bitbucket-mysql
 systemctl start docker-atlassian-bitbucket
 echo Done!
