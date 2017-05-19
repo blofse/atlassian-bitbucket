@@ -35,9 +35,9 @@ Copy the files into the following locations, respective to the script file locat
 
 The file "imports/bitbucket.properties" should not need updating and should be left alone.
 
-Once ready, run the following script, replacing *** with your db password entered above:
+Once ready, run the following script, replacing *** with your db password entered above and !!!! with your db type:
 ```
-./migrate_existing_db_and_home.sh '***'
+./migrate_existing_!!!!_db_and_home.sh '***'
 ```
 
 ## (optional) setting up as a service
