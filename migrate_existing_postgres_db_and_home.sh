@@ -19,7 +19,7 @@ echo Stopping BB
 docker exec -i -u bitbucket atlassian-bitbucket /opt/atlassian/bitbucket/bin/stop-bitbucket.sh
 
 echo Importing existing data
-docker exec -i atlassian-bitbucket-mysql mysql -u bitbucket --password="$1" bitbucket < imports/bitbucket.sql
+docker exec -i atlassian-bitbucket-postgres psql -U bitbucket bitbucket < imports/bitbucket.sql
 
 echo Copying home zip over to docker image
 docker cp imports/bitbucket-home.zip atlassian-bitbucket:/bitbucket-home.zip
@@ -35,12 +35,12 @@ docker exec -u bitbucket -i atlassian-bitbucket /bin/bash -c 'rm -fr /tmp/bitbuc
 docker exec -u root -i atlassian-bitbucket /bin/bash -c 'rm -f /bitbucket-home.zip'
 
 echo Copying over new properties
-cp imports/bitbucket.properties bitbucket.properties
+cp imports/bitbucket-postgres.properties bitbucket.properties
 sed -i 's~jdbc.password=.*~jdbc.password='$1'~g' bitbucket.properties
 docker cp bitbucket.properties atlassian-bitbucket:/var/atlassian/application-data/bitbucket/shared/bitbucket.properties
 rm bitbucket.properties
 
-echo Stopping & starting up BB service
+echo Stopping-starting up BB service
 docker stop atlassian-bitbucket
 docker start atlassian-bitbucket
 
