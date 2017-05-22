@@ -19,7 +19,7 @@ echo Stopping BB
 docker exec -i -u bitbucket atlassian-bitbucket /opt/atlassian/bitbucket/bin/stop-bitbucket.sh
 
 echo Importing existing data
-docker exec -i atlassian-bitbucket-postgres psql -U bitbucket bitbucket < imports/bitbucket.sql
+docker exec -i atlassian-bitbucket-database psql -U bitbucket bitbucket < imports/bitbucket.sql
 
 echo Copying home zip over to docker image
 docker cp imports/bitbucket-home.zip atlassian-bitbucket:/bitbucket-home.zip

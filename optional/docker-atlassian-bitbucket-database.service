@@ -1,0 +1,12 @@
+[Unit]
+Description=Docker - Atlassian Bitbucket database container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a atlassian-bitbucket-database
+ExecStop=/usr/bin/docker stop -t 2 atlassian-bitbucket-database
+
+[Install]
+WantedBy=default.target
