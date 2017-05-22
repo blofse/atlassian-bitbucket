@@ -1,4 +1,4 @@
-# atlassian-bitbucket
+# atlassian-bitbucket - A docker image containing version 5.0.1 based on alpine linux, with mysql / postgres support
 A docker container for running bitbucket - running on openjdk alpine linux.
 Included in the git repo are a couple of tools to migrate data from an existing BB service into the docker container and also run as a service.
 
