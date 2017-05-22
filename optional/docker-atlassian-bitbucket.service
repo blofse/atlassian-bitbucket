@@ -1,7 +1,7 @@
 [Unit]
 Description=Docker - Atlassian Bitbucket container
-Requires=docker-atlassian-bitbucket-mysql.service
-After=docker-atlassian-bitbucket-mysql.service
+Requires=docker-atlassian-bitbucket-database.service
+After=docker-atlassian-bitbucket-database.service
 
 [Service]
 Restart=always
