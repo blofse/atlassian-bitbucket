@@ -7,7 +7,7 @@ ENV BITBUCKET_VERSION=5.0.1 \
     MYSQL_VERSION=5.1.38
 
 RUN set -x \
-    && apk add --no-cache libressl wget tar git tomcat-native bash unzip \
+    && apk add --no-cache libressl wget tar git tomcat-native bash unzip perl \
     && mkdir -p "${BITBUCKET_HOME}" \
     && mkdir -p "${BITBUCKET_INSTALL}" \
     && wget -O "atlassian-bitbucket-${BITBUCKET_VERSION}.tar.gz" --no-verbose "http://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-${BITBUCKET_VERSION}.tar.gz" \
