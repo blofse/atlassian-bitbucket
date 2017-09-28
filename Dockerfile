@@ -1,13 +1,13 @@
 FROM openjdk:8-alpine
 
 # Configuration variables.
-ENV BITBUCKET_VERSION=5.0.1 \
+ENV BITBUCKET_VERSION=5.4.0 \
     BITBUCKET_HOME=/var/atlassian/application-data/bitbucket \
     BITBUCKET_INSTALL=/opt/atlassian/bitbucket \
     MYSQL_VERSION=5.1.38
 
 RUN set -x \
-    && apk add --no-cache libressl wget tar git tomcat-native bash unzip perl \
+    && apk add --no-cache libressl wget tar git tomcat-native bash unzip perl tzdata \
     && mkdir -p "${BITBUCKET_HOME}" \
     && mkdir -p "${BITBUCKET_INSTALL}" \
     && wget -O "atlassian-bitbucket-${BITBUCKET_VERSION}.tar.gz" --no-verbose "http://www.atlassian.com/software/stash/downloads/binary/atlassian-bitbucket-${BITBUCKET_VERSION}.tar.gz" \
@@ -23,7 +23,8 @@ RUN set -x \
     && chown -R bitbucket "${BITBUCKET_HOME}" \
     && chown -R bitbucket "${BITBUCKET_INSTALL}" \
     && chmod -R 700 "${BITBUCKET_HOME}" \
-    && chmod -R 700 "${BITBUCKET_INSTALL}"
+    && chmod -R 700 "${BITBUCKET_INSTALL}" \
+    && cp /usr/share/zoneinfo/Europe/London /etc/localtime
 
 # Expose default HTTP connector port.
 EXPOSE 7990 7999
