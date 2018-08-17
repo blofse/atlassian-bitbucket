@@ -1,7 +1,7 @@
-FROM openjdk:8-alpine
+FROM anapsix/alpine-java:8_jdk-dcevm_unlimited
 
 # Configuration variables.
-ENV BITBUCKET_VERSION=5.7.1 \
+ENV BITBUCKET_VERSION=5.13.0 \
     BITBUCKET_HOME=/var/atlassian/application-data/bitbucket \
     BITBUCKET_INSTALL=/opt/atlassian/bitbucket \
     MYSQL_VERSION=5.1.38
